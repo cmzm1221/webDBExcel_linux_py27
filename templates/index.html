@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>DB  Tool</title>
+    </head>
+
+	<style type="text/css">
+		<!--
+			body {font:16px Simsun;margin:0px;}
+			#wrap {width:1024px;clear:both;}     /*页面层容器*/
+			#Header {clear:both;height:20px;}   /*页面头部*/
+			#Leftbar {width:30px;float:left;}
+			#BarContent {width:240px;float:right;}
+			#PageBody {clear:both;height:400px} /*页面主体*/
+			#Sidebar {width:270px;float:left;}
+			#MainBody {width:754px;float:right;height:100%}
+     	-->
+    </style>
+	<script>
+		function mysql_dbbackup_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="block";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function mysql_dbreset_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="block";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function mysql_dbsql_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="block";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function spark_dbbackup_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="block";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function spark_dbreset_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="block";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function spark_dbsql_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="block";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function compare2excel_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="block";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function spark_dbsqlAndCompare_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="block";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function compare2excel_retains_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="block";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function compare2txt_intersection_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="block";
+			div11.style.display="none";
+			div12.style.display="none";
+		}
+
+		function compare2txt_union_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="block";
+			div12.style.display="none";
+		}
+
+		function compare2txt_difference_click(){
+			var div1 = document.getElementById("content_mysql_dbbackup") ;
+			var div2 = document.getElementById("content_mysql_dbreset") ;
+			var div3 = document.getElementById("content_mysql_dbsql") ;
+			var div4 = document.getElementById("content_spark_dbbackup") ;
+			var div5 = document.getElementById("content_spark_dbreset") ;
+			var div6 = document.getElementById("content_spark_dbsql") ;
+			var div7 = document.getElementById("content_compare2excel") ;
+			var div8 = document.getElementById("content_spark_dbsqlAndCompare") ;
+			var div9 = document.getElementById("content_compare2excel_retains") ;
+			var div10 = document.getElementById("content_compare2txt_intersection") ;
+			var div11 = document.getElementById("content_compare2txt_union") ;
+			var div12 = document.getElementById("content_compare2txt_difference") ;
+			div1.style.display="none";
+			div2.style.display="none";
+			div3.style.display="none";
+			div4.style.display="none";
+			div5.style.display="none";
+			div6.style.display="none";
+			div7.style.display="none";
+			div8.style.display="none";
+			div9.style.display="none";
+			div10.style.display="none";
+			div11.style.display="none";
+			div12.style.display="block";
+		}
+
+
+	</script>
+
+	<body>
+		<div id="wrap">
+			<div id="Header"></div>
+			<div id="PageBody">
+				<div id="Sidebar">
+				   <div id="Leftbar"></div>
+				    <div id="BarContent">
+						<span ><font size="7px"><strong>Mysql</strong> </font></span > <br/><br/>
+						<span >1、<a href="#" onclick="mysql_dbbackup_click();"><span id="id_mysql_dbbackup">备份数据库 </span> </a> </span> <br/><br/>
+						<span >2、<a href="#" onclick="mysql_dbreset_click();"><span id="id_mysql_dbreset">还原数据库 </span> </a></span> <br/><br/>
+						<span >3、<a href="#" onclick="mysql_dbsql_click();"><span id="id_mysql_dbsql">执行sql 保存为excel </span> </a> </span > <br/><br/>
+						<span >&nbsp;</span ><br/><br/><br/>
+
+						<span ><font size="7px"><strong>Spark</strong> </font></span > <br><br/>
+						<span >1、<a href="#" onclick="spark_dbbackup_click();"><span id="id_spark_dbbackup">备份数据库 </span> </a> </span> <br/><br/>
+						<span >2、<a href="#" onclick="spark_dbreset_click();"><span id="id_spark_dbreset">还原数据库 </span> </a></span> <br/><br/>
+						<span >3、<a href="#" onclick="spark_dbsql_click();"><span id="id_spark_dbsql">执行sql 保存为excel </span> </a> </span > <br/><br/>
+						<span >4、<a href="#" onclick="spark_dbsqlAndCompare_click();"><span id="id_spark_dbsqlAndCompare">对比buffer层与ods层每日增量，结果保存为excel </span> </a> </span > <br/><br/>
+						<span >&nbsp;</span ><br/><br/><br/>
+
+						<span ><font size="6px"><strong>其他公用</strong> </font></span > <br/><br/>
+						<span >1、<a href="#" onclick="compare2excel_click();"><span id="id_compare2excel"> 对比2个excel文件，结果未保留原excel数据 </span> </a> </span> <br/><br/>
+						<span >2、<a href="#" onclick="compare2excel_retains_click();"><span id="id_compare2excel_retains"> 对比2个excel文件,结果有保留原excel数据 </span> </a> </span> <br/><br/>
+						<span >3、<a href="#" onclick="compare2txt_intersection_click();"><span id="id_compare2txt_intersection"> 对比2个txt文件,找出 交集 </span> </a> </span> <br/><br/>
+						<span >4、<a href="#" onclick="compare2txt_union_click();"><span id="id_compare2txt_union"> 对比2个txt文件,找出 并集 </span> </a> </span> <br/><br/>
+						<span >5、<a href="#" onclick="compare2txt_difference_click();"><span id="id_compare2txt_difference"> 对比2个txt文件,找出 差集 </span> </a> </span> <br/><br/>
+						<span >&nbsp;</span ><br/><br/><br/>
+					</div>
+				</div>
+
+				<div id="MainBody">
+				    <div id="content_mysql_dbbackup"  style="display:block">
+						<form action="mysql/backupData" target ='mysql_backupData_ifm' method="post" name="mysql_backupData_ifm">
+							<table>
+								<tr><td colspan =2> 备份 MYSQL 数据库连接信息</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>IP:</td><td><input type="text" id="dbHost"  name="dbHost" value="127.0.0.1" /></td></tr>
+								<tr><td>端口号:</td><td><input type="text" id="port" name="port"  value="3306" /></td></tr>
+								<tr><td>账号:</td><td><input type="text"  id="user" name="user"  value="root" /></td></tr>
+								<tr><td>密码:</td><td><input type="text" id="password"  name="password"  value="123456" /></td></tr>
+								<tr><td>数据库名称:</td><td><input type="text" id="dbName"  name="dbName"  value="mysql" /></td></tr>
+								<tr><td>表名列表:</td><td><input type="text"  id="tableNameList" name="tableNameList"  value="db,user" /></td></tr>
+								<tr><td>表的起始位置:</td><td><input type="text"  id="startPosition" name="startPosition" placeholder="默认0表示初始位置"  /></td></tr>
+								<tr><td>查询条数:</td><td><input type="text"  id="num" name="num"  placeholder="默认0表示全部" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="备份"/>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口的返回结果： </td></tr>
+								<tr><td colspan =2><iframe id='mysql_backupData_ifm' name='mysql_backupData_ifm' ></iframe></td></tr>
+							</table>
+						</form>
+				    </div>
+
+					<div id="content_mysql_dbreset"  style="display:none">
+						<form method="post" action="mysql/restoreData" target ='mysql_dbreset_ifm' name="mysql_dbreset_ifm"  enctype="multipart/form-data">
+							<table>
+								<tr><td colspan =2> 还原 MYSQL 数据库连接信息</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>还原数据库的文件:</td><td><input type="file" id="mysql_dbreset_file" name="file" /></td></tr>
+								<tr><td>IP:</td><td><input type="text" id="mysql_dbreset_dbHost"  name="dbHost" value="127.0.0.1" /></td></tr>
+								<tr><td>端口号:</td><td><input type="text" id="mysql_dbreset_port" name="port"  value="3306" /></td></tr>
+								<tr><td>账号:</td><td><input type="text"  id="mysql_dbreset_user" name="user"  value="root" /></td></tr>
+								<tr><td>密码:</td><td><input type="text" id="mysql_dbreset_password"  name="password"  value="123456" /></td></tr>
+								<tr><td>工作表列表:</td><td><input type="text" id="mysql_sheetNameList"  name="sheetNameList"  placeholder="多个工作表用逗号分隔" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="还原" />
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口的返回结果： </td></tr>
+								<tr><td colspan =2><iframe id='mysql_dbreset_ifm' name='mysql_dbreset_ifm'></iframe></td></tr>
+							</table>
+						</form>
+					</div>
+
+					<div id="content_mysql_dbsql"  style="display:none">
+						<form method="post" action="mysql/runSqlAndSaveExcel" target ='mysql_dbsql_ifm' name="mysql_dbsql_ifm"  enctype="multipart/form-data">
+							<table>
+								<tr><td colspan =2> 执行sql语句，MYSQL 数据库连接信息</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>执行sql的文件:</td><td><input type="file" id="mysql_dbsql_file" name="file" /></td></tr>
+								<tr><td>IP:</td><td><input type="text" id="mysql_dbsql_dbHost"  name="dbHost" value="127.0.0.1" /></td></tr>
+								<tr><td>端口号:</td><td><input type="text" id="mysql_dbsql_port" name="port"  value="3306" /></td></tr>
+								<tr><td>账号:</td><td><input type="text"  id="mysql_dbsql_user" name="user"  value="root" /></td></tr>
+								<tr><td>密码:</td><td><input type="text" id="mysql_dbsql_password"  name="password"  value="123456" /></td></tr>
+								<tr><td>数据库:</td><td><input type="text" id="mysql_dbsql_dbName"  name="dbName"  placeholder="不指定可不填写" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="执行" />
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口返回的结果 </td></tr>
+								<tr><td colspan =2><iframe id='mysql_dbsql_ifm' name='mysql_dbsql_ifm'></iframe></td></tr>
+							</table>
+						</form>
+					</div>
+
+					<div id="content_spark_dbbackup"  style="display:none">
+						<form action="http://127.0.0.1:8972/mysql/backupData" method="post"  name="spark_dbbackup">
+							<table>
+								<tr>敬请期待</tr>
+								<!--<tr><td colspan =2> 备份 MYSQL 数据库连接信息-->
+								<!--<tr><td width=110>IP:</td><td><input type="text" id="spark_dbHost"  name="dbHost" value="127.0.0.1" /></td></tr>-->
+								<!--<tr><td>端口号:</td><td><input type="text" id="spark_port" name="port"  value="3306" /></td></tr>-->
+								<!--<tr><td>账号:</td><td><input type="text"  id="spark_user" name="user"  value="root" /></td></tr>-->
+								<!--<tr><td>密码:</td><td><input type="text" id="spark_password"  name="password"  value="123456" /></td></tr>-->
+								<!--<tr><td>数据库名称:</td><td><input type="text" id="spark_dbName"  name="dbName"  value="mysql" /></td></tr>-->
+								<!--<tr><td>表名列表:</td><td><input type="text"  id="spark_tableNameList" name="tableNameList"  value="db,user" /></td></tr>-->
+								<!--<tr><td>表的起始位置:</td><td><input type="text"  id="spark_startPosition" name="startPosition" value="0"  /></td></tr>-->
+								<!--<tr><td>查询条数:</td><td><input type="text"  id="spark_num" name="num"  value="0" /></td></tr>-->
+								<!--<tr><td colspan =2><input type="button" value="备份"  onclick="mysql_dbbackup_excute()"/>-->
+
+								<!--<tr><td colspan =2><textarea id="spark_dbbackup_res" cols=40 rows =5></textarea></td></tr>-->
+							</table>
+						</form>
+				    </div>
+
+					<div id="content_spark_dbreset"  style="display:none">
+						<form action="">
+							<table>
+								<tr>敬请期待</tr>
+								<!--<tr><td>NAME1:</td><td><input type="text" name="name1" /></td></tr>-->
+								<!--<tr><td>NAME1:</td><td><input type="text" name="name2" /></td></tr>-->
+								<!--<tr><td>NAME1:</td><td><input type="text" name="name3" /></td></tr>-->
+								<!--<tr><td>NAME1:</td><td><input type="text" name="name4" /></td></tr>-->
+								<!--<tr><td>NAME1:</td><td><input type="text" name="name5" /></td></tr>-->
+								<!--<tr><td>NAME1:</td><td><input type="text" name="name6" /></td></tr>-->
+								<!--<tr><td colspan =2><input type="button" value="还原" />-->
+							</table>
+						</form>
+					</div>
+
+					<div id="content_spark_dbsql"  style="display:none">
+						<form method="post" action="spark/runSqlAndSaveExcel" target ='spark_dbsql_ifm' name="spark_dbsql_ifm"  enctype="multipart/form-data">
+							<table>
+								<tr><td colspan =2> 执行sql语句，SPARK 数据库连接信息</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>执行sql的文件:</td><td><input type="file" id="spark_dbsql_file" name="file" /></td></tr>
+								<tr><td>IP:</td><td><input type="text" id="spark_dbsql_dbHost"  name="dbHost" value="192.168.104.20" /></td></tr>
+								<tr><td>端口号:</td><td><input type="text" id="spark_dbsql_port" name="port"  value="15000" /></td></tr>
+								<tr><td>账号:</td><td><input type="text"  id="spark_dbsql_user" name="user"  value="spark" /></td></tr>
+								<tr><td>密码:</td><td><input type="text" id="spark_dbsql_password"  name="password"  placeholder="密码为空可不填" /></td></tr>
+								<tr><td>数据库:</td><td><input type="text" id="spark_dbsql_dbName"  name="dbName"  placeholder="不指定默认为default" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="执行" />
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口返回的结果 </td></tr>
+								<tr><td colspan =2><iframe id='spark_dbsql_ifm' name='spark_dbsql_ifm'></iframe></td></tr>
+							</table>
+						</form>
+					</div>
+
+					<div id="content_spark_dbsqlAndCompare"  style="display:none">
+						<form method="post" action="spark/runSqlAndCompareAndSaveExcel" target ='spark_dbsqlAndCompare_ifm' name="spark_dbsqlAndCompare_ifm"  enctype="multipart/form-data">
+							<table>
+								<tr><td colspan =2> 执行sql语句并进行对比，SPARK 数据库连接信息</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>执行 buffer 层的 sql文件:</td><td><input type="file" id="spark_dbsqlAndCompare_file_buffer" name="file1" /></td></tr>
+								<tr><td width=110>执行 ods 层的 sql文件:</td><td><input type="file" id="spark_dbsqlAndCompare_file_ods" name="file2" /></td></tr>
+								<tr><td>IP:</td><td><input type="text" id="spark_dbsqlAndCompare_dbHost"  name="dbHost" value="192.168.104.20" /></td></tr>
+								<tr><td>端口号:</td><td><input type="text" id="spark_dbsqlAndCompare_port" name="port"  value="15000" /></td></tr>
+								<tr><td>账号:</td><td><input type="text"  id="spark_dbsqlAndCompare_user" name="user"  value="spark" /></td></tr>
+								<tr><td>密码:</td><td><input type="text" id="spark_dbsqlAndCompare_password"  name="password"  value="" /></td></tr>
+								<tr><td>数据库:</td><td><input type="text" id="spark_dbsqlAndCompare_dbName"  name="dbName"  placeholder="不指定默认为default" /></td></tr>
+								<tr><td>查询日期:</td><td><input type="text" id="spark_dbsqlAndCompare_date"  name="query_date"  placeholder="不指定默认为昨天" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="执行查询并对比" />
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口返回的结果 </td></tr>
+								<tr><td colspan =2><iframe id='spark_dbsqlAndCompare_ifm' name='spark_dbsqlAndCompare_ifm'></iframe></td></tr>
+							</table>
+						</form>
+					</div>
+
+					<div id="content_compare2excel"  style="display:none">
+						<form method="post" action="compare2excel" target ='compare2excel_ifm' name="compare2excel_ifm"  enctype="multipart/form-data">
+							<table>
+								<tr><td colspan =2> 对比2个excel 文件，保存的对比文档没有包含原excel 数据。</td></tr>
+								<tr><td colspan =2> 注意格式保持一致。</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>对比文件1:</td><td><input type="file" id="compare2excel_file1" name="file1" /></td></tr>
+								<tr><td width=110>对比文件2:</td><td><input type="file" id="compare2excel_file2" name="file2" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="对比" />
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口返回的结果 </td></tr>
+								<tr><td colspan =2><iframe id='compare2excel_ifm' name='compare2excel_ifm'></iframe></td></tr>
+							</table>
+						</form>
+					</div>
+
+					<div id="content_compare2excel_retains"  style="display:none">
+						<form method="post" action="compare2excel_retains" target ='compare2excel_retains_ifm' name="compare2excel_retains_ifm"  enctype="multipart/form-data">
+							<table>
+								<tr><td colspan =2> 对比2个excel 文件，保存的对比文档包含原excel 数据。</td></tr>
+								<tr><td colspan =2> 注意格式保持一致。</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>对比文件1:</td><td><input type="file" id="compare2excel_retains_file1" name="file1" /></td></tr>
+								<tr><td width=110>对比文件2:</td><td><input type="file" id="compare2excel_retains_file2" name="file2" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="对比" />
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口返回的结果 </td></tr>
+								<tr><td colspan =2><iframe id='compare2excel_retains_ifm' name='compare2excel_retains_ifm'></iframe></td></tr>
+							</table>
+						</form>
+					</div>
+
+					<div id="content_compare2txt_intersection"  style="display:none">
+						<form method="post" action="compare2txt_intersection" target ='compare2txt_intersection_ifm' name="compare2txt_intersection_ifm"  enctype="multipart/form-data">
+							<table>
+								<tr><td colspan =2> 对比2个txt 文件，找出两个文件的交集。</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>对比文件1:</td><td><input type="file" id="compare2txt_intersection_file1" name="file1" /></td></tr>
+								<tr><td width=110>对比文件2:</td><td><input type="file" id="compare2txt_intersection_file2" name="file2" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="对比" />
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口返回的结果 </td></tr>
+								<tr><td colspan =2><iframe id='compare2txt_intersection_ifm' name='compare2txt_intersection_ifm'></iframe></td></tr>
+							</table>
+						</form>
+					</div>
+
+					<div id="content_compare2txt_union"  style="display:none">
+						<form method="post" action="compare2txt_union" target ='compare2txt_union_ifm' name="compare2txt_union_ifm"  enctype="multipart/form-data">
+							<table>
+								<tr><td colspan =2> 对比2个txt 文件，找出两个文件的并集。</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>对比文件1:</td><td><input type="file" id="compare2txt_union_file1" name="file1" /></td></tr>
+								<tr><td width=110>对比文件2:</td><td><input type="file" id="compare2txt_union_file2" name="file2" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="对比" />
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口返回的结果 </td></tr>
+								<tr><td colspan =2><iframe id='compare2txt_union_ifm' name='compare2txt_union_ifm'></iframe></td></tr>
+							</table>
+						</form>
+					</div>
+
+					<div id="content_compare2txt_difference"  style="display:none">
+						<form method="post" action="compare2txt_difference" target ='compare2txt_difference_ifm' name="compare2txt_difference_ifm"  enctype="multipart/form-data">
+							<table>
+								<tr><td colspan =2> 对比2个txt 文件，找出两个文件的差集。</td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td width=110>对比文件1:</td><td><input type="file" id="compare2txt_difference_file1" name="file1" /></td></tr>
+								<tr><td width=110>对比文件2:</td><td><input type="file" id="compare2txt_difference_file2" name="file2" /></td></tr>
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2><input type="submit" value="对比" />
+								<tr><td colspan =2>&nbsp; </td></tr>
+								<tr><td colspan =2>接口返回的结果 </td></tr>
+								<tr><td colspan =2><iframe id='compare2txt_difference_ifm' name='compare2txt_difference_ifm'></iframe></td></tr>
+							</table>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
